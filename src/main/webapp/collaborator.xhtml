@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Colaboradores:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Colaboradores</span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<h:outputLabel for="idCollaborator" value="Id" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="idCollaborator"
+				styleClass="form-control"
+				value="#{collaboratorController.collaborator.rcIdCollaborator}" required="true" />
+				
+			<h:outputLabel for="coll" value="Nombres" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="coll" styleClass="form-control"
+				value="#{collaboratorController.collaborator.rcFullName}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="weight" value="Peso" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="weight" styleClass="form-control"
+				value="#{collaboratorController.collaborator.rcWeight}" required="true" />
+				
+			<h:outputLabel for="height" value="Estatura" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="height" styleClass="form-control"
+				value="#{collaboratorController.collaborator.rcHeight}" required="true" />
+			
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{collaboratorController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listCollaborator?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listCollaborator?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
